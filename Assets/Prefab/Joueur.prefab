@@ -946,9 +946,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3880840217925422061}
   - component: {fileID: 5220371875604563706}
-  - component: {fileID: 5220371875604563705}
   - component: {fileID: 753645614}
-  - component: {fileID: 753645613}
+  - component: {fileID: 1510828536}
   m_Layer: 0
   m_Name: Joueur
   m_TagString: Player
@@ -965,7 +964,7 @@ Transform:
   m_GameObject: {fileID: 4508194698020442455}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.87759, y: 1.173806, z: -16.5083}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.42362404, y: 0.42362404, z: 0.42362404}
   m_Children:
   - {fileID: 6707805102299933635}
   - {fileID: 8758324047796824953}
@@ -993,21 +992,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5220371875604563705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4508194698020442455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a20d29b898b9274d85fb946d75a32f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 5220371875604563706}
-  main: {fileID: 4860619087833868960}
-  arme: {fileID: 0}
 --- !u!54 &753645614
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1024,8 +1008,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &753645613
-BoxCollider:
+--- !u!136 &1510828536
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1034,9 +1018,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2.7782373, z: 1}
-  m_Center: {x: 0, y: 1.4869723, z: 0}
+  m_Radius: 0.36923066
+  m_Height: 2.8961954
+  m_Direction: 1
+  m_Center: {x: -0.016958501, y: 1.4941995, z: 0.031332593}
 --- !u!1 &5170979798270076053
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,43 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    public Animator animator;
+    [SerializeField] private int vitesse, vitesseCam;
+    [SerializeField] private Animator animator;
     public Transform main;
     public Transform arme;
+    [SerializeField] private Rigidbody rb;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        arme.parent = main;
-        arme.position = main.position;
+    private Vector3 deplacement, rotation;
 
-        //arme.rotation = new Quaternion(0, 0, 0, 0);
-        
-
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         float _mouvX = Input.GetAxisRaw("Horizontal");
         float _mouvZ = Input.GetAxisRaw("Vertical");
 
-        Vector3 _deplacement = new Vector3(_mouvX, 0, _mouvZ).normalized;
+        // avancer et tourne peut importe la rotation
+        Vector3 _mouH = transform.right * _mouvX;
+        Vector3 _mouV = transform.forward * _mouvZ;
+
+        deplacement = (_mouH + _mouV).normalized * vitesse;
 
         animator.SetFloat("vitesseAvancerReculer", _mouvZ);
         animator.SetFloat("vitesseDroiteGauche", _mouvX);
 
-        transform.Translate(_deplacement * 5 * Time.deltaTime);
+        float _camRotationY = 5 * Input.GetAxis("Mouse X");
+        rotation = new Vector3(0, _camRotationY, 0) * vitesseCam;
+    }
 
-        float x = 5 * Input.GetAxis("Mouse X");
-        transform.Rotate(0, x, 0);
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            animator.SetTrigger("estMort");
-        }
+    private void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + deplacement * Time.fixedDeltaTime);
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(rotation));
     }
 }

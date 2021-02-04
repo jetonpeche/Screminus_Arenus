@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InGameMenu : MonoBehaviour
 {
     public static bool IsGamePaused = false;
     public GameObject pauseMenu;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (IsGamePaused)
             {
-                Resume();
+                Resume();            
             }
             else 
             {
-                Pause();
+                Pause();  
             }
         }
     }
@@ -27,14 +23,18 @@ public class InGameMenu : MonoBehaviour
     public void Pause()
     {
         pauseMenu.SetActive(true);
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
         IsGamePaused = true;
+
+        Souris.DebloquerCurseur();
     }
 
     public void Resume()
     {
+        Souris.BloquerCurseur();
+
         pauseMenu.SetActive(false);
-        Time.timeScale = 0f;
+        Time.timeScale = 1f;
         IsGamePaused = false;
     }
 }
