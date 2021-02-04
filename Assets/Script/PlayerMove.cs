@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Deplacement : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     public Animator animator;
     public Transform main;
@@ -32,7 +32,10 @@ public class Deplacement : MonoBehaviour
 
         transform.Translate(_deplacement * 5 * Time.deltaTime);
 
-        if(Input.GetKeyDown(KeyCode.E))
+        float x = 5 * Input.GetAxis("Mouse X");
+        transform.Rotate(0, x, 0);
+
+        if (Input.GetKeyDown(KeyCode.E))
         {
             animator.SetTrigger("estMort");
         }
