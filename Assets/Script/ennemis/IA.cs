@@ -1,25 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class IA : MonoBehaviour
 {
-    private GameObject targetedPlayer;
-    private NavMeshAgent agentEnnemi;
+    private Transform cible;
+
+    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private Animator animator;
+
 
     private void Awake()
     {
-       agentEnnemi = GetComponent<NavMeshAgent>();
-       targetedPlayer = GameObject.FindGameObjectWithTag("Player");
-    }
-    void Start()
-    {
-        
+        cible = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
-        agentEnnemi.SetDestination(targetedPlayer.transform.position);
+        if(Vector3.Distance(transform.position, cible.position) > agent.stoppingDistance)
+        {
+            animator.SetBool("Court", true);
+            agent.SetDestination(cible.transform.position);
+        }
+        else
+        {
+            animator.SetBool("Court", false);
+        }
     }
 }
