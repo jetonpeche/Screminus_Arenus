@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class ScriptMarket : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    Material onOverMaterial;
-    // Start is called before the first frame update
-    void Start()
+   private Material onOverMaterial;
+
+    private void Awake()
     {
         onOverMaterial = Resources.Load<Material>("Material/WeaponShopBackgroundOnOver");
     }
@@ -24,10 +22,5 @@ public class ScriptMarket : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         Debug.Log("Mouse Exit");
         GetComponent<RawImage>().enabled = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }

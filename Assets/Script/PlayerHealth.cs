@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
 {
@@ -10,16 +8,9 @@ public class PlayerLife : MonoBehaviour
     //Get armor bar / text
     public float p_maxLife;
 
-    // Start is called before the first frame update
     void Start()
     {
         UpdatePlayerLife();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void PlayerDamaged(float damage)
