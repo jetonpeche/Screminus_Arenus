@@ -85,6 +85,7 @@ public class Spawner : MonoBehaviour
 
     private bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
+        // cherche une place dispo sur le navMesh
         for (int i = 0; i < 30; i++)
         {
             Vector3 _randomPoint = center + Random.insideUnitSphere * range;
