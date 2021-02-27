@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class IA : MonoBehaviour
 {
     private Transform cible;
+    
 
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator animator;
@@ -20,11 +21,13 @@ public class IA : MonoBehaviour
         if(Vector3.Distance(transform.position, cible.position) > agent.stoppingDistance)
         {
             animator.SetBool("Court", true);
+            animator.SetBool("Attaquer", false);
             agent.SetDestination(cible.transform.position);
         }
         else
         {
             animator.SetBool("Court", false);
+            animator.SetBool("Attaquer", true);
         }
     }
 }
